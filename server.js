@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { router } from "./routes/routes.js";
 import cookieParser from "cookie-parser";
 import cloudinary from "cloudinary";
+import cors from "cors";
 
 dotenv.config({ path: "./.env" });
 export const app = express();
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 8989;
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
+app.use(cors());
 
 const { connection } = await mongoose.connect(process.env.URI);
 
